@@ -1,0 +1,17 @@
+# Ignore all node_modules directories at any level
+node_modules/
+
+# Ignore build output folders
+dist/
+build/
+
+# Ignore .env files (which contain your email password!)
+.env
+server/.env
+
+# Ignore OS files
+.DS_Store
+npm-debug.log*
+
+# Ignore IDE files
+.vscode/

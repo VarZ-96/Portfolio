@@ -1,0 +1,66 @@
+/* --- Global & Theme --- */
+:root {
+  --black: #000000;
+  --dark-grey: #121212;
+  --near-black: #0a0a0a;
+  --neon-pink: #ff00ff;
+  --neon-green: #00ff00;
+  --neon-blue: #00ffff;
+  --text-light: #f0f0f0;
+  --text-dark: #888;
+
+  --font-main: 'Helvetica Neue', Arial, sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  cursor: none;
+}
+canvas {
+  background: transparent;
+}
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-main);
+  background-color: var(--black);
+  color: var(--text-light);
+  line-height: 1.6;
+  overflow-x: hidden;
+  cursor: none;
+}
+
+main {
+  /* This ensures that your main content stacks on top of the background */
+  position: relative;
+  z-index: 10;
+  /* Give a solid background for content sections */
+  /* background-color: var(--near-black); */
+}
+
+h1,
+h2,
+h3 {
+  font-weight: 300;
+  letter-spacing: 1px;
+}
+
+h2 {
+  font-size: 2.8rem;
+  color: var(--neon-pink);
+  text-shadow: 0 0 10px var(--neon-pink), 0 0 20px var(--neon-pink);
+  margin-bottom: 2rem;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+p {
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+  color: var(--text-light);
+  max-width: 800px;
+}

@@ -1,0 +1,415 @@
+.watermark {
+  position: fixed;
+  bottom: 15px;
+  right: 20px;
+  background: rgba(30, 30, 30, 1);
+  color: #fff;
+  font-family: "Poppins", sans-serif;
+  font-size: 0.9rem;
+  letter-spacing: 0.5px;
+  padding: 15px 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
+  z-index: 999;
+  user-select: none;
+  opacity: 1;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.watermark:hover {
+  opacity: 1;
+  transform: scale(1.05);
+}
+.cursor-dot,
+.cursor-trail {
+  position: fixed;
+  top: 0;
+  left: 0;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+}
+
+.cursor-dot {
+  width: 22px;
+  height: 22px;
+  background: white;
+  box-shadow: 
+    0 0 25px rgba(255, 255, 255, 1),
+    0 0 50px rgba(102, 179, 255, 1),
+    0 0 90px rgba(102, 179, 255, 0.9);
+  mix-blend-mode: screen;
+}
+
+/* Trail elements - higher opacity and glow */
+.cursor-trail {
+  width: 18px;
+  height: 18px;
+  background: radial-gradient(circle, rgba(102,179,255,0.9) 0%, rgba(102,179,255,0) 80%);
+  filter: blur(14px);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+
+body {
+  cursor: none;
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  color: #fff;
+  background-color: #000;
+}
+
+/* === Sections === */
+.section {
+  min-height: 100vh;
+  width: 100%;
+  padding: 120px 10%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid #222;
+  background-color: rgba(10, 10, 10, 0.7);
+}
+
+.section-content {
+  max-width: 1200px;
+  width: 100%;
+  z-index: 10;
+}
+
+/* Fade-in */
+.fade-in-section {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+.fade-in-section.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Nav */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 1.5rem 10%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1000;
+  background: rgba(10, 10, 10, 0.1);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(0, 255, 255, 0.2);
+}
+
+.nav-logo {
+  font-size: 1.8rem;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 700;
+  text-shadow: 0 0 5px #39ff14;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+}
+.nav-links li { margin-left: 2.5rem; }
+
+.nav-links a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  position: relative;
+  cursor: pointer;
+  padding: 10px;
+  cursor: none;
+}
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #39ff14;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.4s ease;
+}
+.nav-links a:hover {
+  color: #39ff14;
+  text-shadow: 0 0 5px #39ff14;
+}
+.nav-links a:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+/* Spline background */
+.spline-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: -1;
+  pointer-events: none;
+}
+canvas { background: transparent; }
+.resume-button {
+      margin-top: 1.5rem;
+      display: inline-block;
+    }
+/* Home */
+.home-section { text-align: center; }
+.home-content h1 {
+  font-size: 4.5rem;
+  margin-bottom: 0.1rem;
+  font-weight: 700;
+}
+.home-content .highlight {
+  color: #ff00ff;
+  text-shadow: 0 0 7px #ff00ff;
+}
+.home-content .subtitle {
+  font-size: 1.5rem;
+  color: #aaa;
+  margin-bottom: 2rem;
+}
+.cta-button {
+  background: transparent;
+  border: 2px solid #00ffff;
+  color: #00ffff;
+  padding: 18px 30px;
+  font-size: 1rem;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-radius: 30px;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 10px #00ffff;
+  border-radius: 30px;
+  margin-top: 10px;
+}
+.cta-button:hover {
+  background: #00ffff;
+  color: #000;
+  box-shadow: 0 0 20px #00ffff, 0 0 30px #00ffff;
+}
+
+/* About */
+.about-content {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+}
+.about-text { flex: 2; }
+.about-image-placeholder {
+  flex: 1;
+  height: 300px;
+  border-radius: 8px;
+  background-color: #111;
+  border: 2px dashed #ff00ff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #aaa;
+  box-shadow: 0 0 15px #ff00ff;
+}
+/*about photo*/
+.about-image-placeholder {
+  flex: 1;
+  height: 400px; /* You can adjust this height */
+  min-width: 250px; /* Ensures it doesn't get too squished */
+  border-radius: 8px;
+  /* Keep the glowing border */
+  border: 2px solid var(--neon-pink);
+  box-shadow: 0 0 15px var(--neon-pink);
+  /* This makes the image inside fit perfectly */
+  overflow: hidden; 
+}
+
+.about-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* This scales the image to fill the box */
+  object-position: center; /* Tries to center the image */
+}
+/* Skills */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(120px, 1fr));
+  gap: 1.5rem;
+  width: 100%;
+}
+.skill-card {
+  background-color: #111;
+  border-radius: 8px;
+  padding: 1.5rem;
+  text-align: center;
+  border: 1px solid #222;
+  border-bottom: 3px solid #39ff14;
+  transition: all 0.3s ease;
+}
+.skill-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0,255,0,0.1);
+}
+.skill-card-icon {
+  /* This centers the logo and gives it a fixed height */
+  height: 60px; /* You can adjust this */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.skill-card-icon img {
+  /* This makes sure the logo fits inside the div */
+  max-height: 100%;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+/* This is our fallback for text (like "S" for Spline) */
+.logo-text {
+  font-size: 3rem;
+  font-weight: bold;
+  color: var(--neon-green);
+}
+/* --- END OF UPDATED CSS --- */
+
+.skill-card h3 {
+  font-size: 1.1rem;
+  color: var(--text-light);
+  /* Make sure text doesn't wrap weirdly */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Projects */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+.project-card {
+  background-color: #111;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid #222;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+.project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0,255,255,0.1);
+  border-color: #00ffff;
+}
+.project-image {
+      height: 200px;
+      background-color: #333;
+      overflow: hidden; /* This will contain the image */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: var(--text-dark);
+      font-style: italic;
+}
+
+.project-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  transition: all 0.4s ease;
+}
+
+.project-card:hover .project-image img {
+  transform: scale(1.05);
+}
+.project-info { padding: 1.5rem; }
+.project-info h3 {
+  color: #00ffff;
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+.project-links {
+  display: flex;
+  gap: 1rem;
+}
+.project-links a {
+  color: #39ff14;
+  text-decoration: none;
+  font-weight: 600;
+}
+.project-links a:hover { text-decoration: underline; }
+
+/* Contact */
+.contact-form {
+  width: 100%;
+  max-width: 700px;
+  margin: 0 auto;
+}
+.form-group { margin-bottom: 1.5rem; }
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #aaa;
+}
+.form-input,
+.form-textarea {
+  width: 100%;
+  padding: 12px;
+  border-radius: 4px;
+  border: 1px solid #333;
+  background-color: #111;
+  color: #fff;
+  font-size: 1rem;
+}
+.form-input:focus,
+.form-textarea:focus {
+  outline: none;
+  border-color: #ff00ff;
+  box-shadow: 0 0 10px #ff00ff;
+}
+.form-textarea {
+  min-height: 150px;
+  resize: vertical;
+}
+.submit-button {
+  background-color: transparent;
+  border: 2px solid #39ff14;
+  color: #39ff14;
+  padding: 17px 30px;
+  border-radius: 30px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+.submit-button:hover {
+  background-color: #39ff14;
+  color: #000;
+  box-shadow: 0 0 15px #39ff14;
+}
+
+/* Footer */
+.footer {
+  padding: 2rem 10%;
+  text-align: center;
+  border-top: 1px solid #222;
+  background-color: #0a0a0a;
+  color: #aaa;
+}
