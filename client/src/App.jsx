@@ -164,7 +164,7 @@ const projectsData = [
     title: "Vibe-Commerce Cart",
     imageUrl: "/project-1.png",
     description: "A PERN stack e-commerce app with secure Google OAuth 2.0 login, JWT-based stateless sessions, Razorpay integration and applications of LLD and HLD.",
-    liveUrl: "#",
+    liveUrl: "https://vibe-commerce-cart-virid.vercel.app/",
     githubUrl: "https://github.com/VarZ-96/VibeCommerce-Cart",
   },
   {
