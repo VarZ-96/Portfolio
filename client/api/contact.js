@@ -1,4 +1,4 @@
-import nodemailer from 'nodemailer';
+const nodemailer = require('nodemailer');
 
 // This is our serverless function handler
 export default async function handler(req, res) {
