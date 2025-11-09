@@ -12,12 +12,12 @@
   ],
   "routes": [
     {
-      "source": "/api/contact",
-      "destination": "api/contact.js"
+      "src": "/api/contact",
+      "dest": "api/contact.js"
     },
     {
-      "source": "/(.*)",
-      "destination": "/index.html"
+      "src": "/(.*)",
+      "dest": "/index.html"
     }
   ]
 }
